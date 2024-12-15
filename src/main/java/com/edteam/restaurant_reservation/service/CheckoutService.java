@@ -69,6 +69,7 @@ public class CheckoutService {
         	//purchaseIdStr  es el id de la reserva
         	String purchaseIdStr = orderCaptureResponse.getPurchaseUnits().getFirst().getReferenceId();
             Reservation reservation = reservationService.confirmReservationPayment(Long.parseLong(purchaseIdStr));
+           //se setea el valor para que pase de  pendiente a pagado la reserva
             paypalCaptureResponse.setReservationId(reservation.getId());
         }
         return paypalCaptureResponse;
